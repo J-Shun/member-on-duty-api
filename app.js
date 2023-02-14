@@ -9,7 +9,7 @@ const notFound = require("./middleware/notfound");
 const errorHandling = require("./middleware/errorHandling");
 
 const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
+const userRouter = require("./routes/user");
 
 const app = express();
 
@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // routes
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/user", userRouter);
 
 // 404 not found
 app.use(notFound);
