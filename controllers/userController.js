@@ -78,10 +78,6 @@ const userLogin = handleErrorAsync(async (req, res, next) => {
     return appError("400", "Email not found");
   }
 
-  console.log(user);
-
-  // console.log(user.password);
-
   const match = await bcrypt.compare(password, user.password);
   if (!match) {
     return appError("400", "Incorrect password");
