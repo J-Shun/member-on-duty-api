@@ -25,6 +25,14 @@ const userSignup = handleErrorAsync(async (req, res, next) => {
     return appError("400", "invalid email address", next);
   }
 
+  if (name.trim().length === 0) {
+    return appError("400", "name must not be empty", next);
+  }
+
+  if (name.trim().length > 20) {
+    return appError("400", "please fill in less than 20 characters", next);
+  }
+
   const emailExit = await User.exists({ email });
   if (emailExit) {
     return appError("400", "email already in use", next);
